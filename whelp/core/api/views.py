@@ -2,7 +2,7 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, permissions
 
 from core.models import File, PDFContent
 from core.tasks import ExtractPDFContent
@@ -11,7 +11,7 @@ from .serializers import FileCreateSerializer, FileRetrieveSerializer, FileStatu
 
 class FileUploadView(APIView):
     parser_classes = (MultiPartParser, FormParser)
-
+    permission_classes = (permissions.IsAuthenticated,)
     def post(self, request, *args, **kwargs):
         # TODO: Checking if extension is .pdf
         file_create_serializer = FileCreateSerializer(data=request.data)
