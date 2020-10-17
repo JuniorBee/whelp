@@ -1,2 +1,6 @@
 .idea
 .venv
+.env.dev
+*.sqlite3
+whelp/media/
+whelp/static/

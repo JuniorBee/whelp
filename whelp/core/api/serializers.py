@@ -11,4 +11,4 @@ class FileCreateSerializer(serializers.ModelSerializer):
 class FileRetrieveSerializer(serializers.ModelSerializer):
     class Meta:
         model = File
-        fields = ('file',)
+        fields = ('id', 'file', 'timestamp')
