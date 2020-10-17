@@ -8,3 +8,4 @@ sqlparse==0.4.1
 celery==4.4.1
 redis==3.4.1
 pdfminer3==2018.12.3.0
+djangorestframework-simplejwt==4.4.0
