@@ -15,5 +15,4 @@ fi
 #python manage.py flush
 #python manage.py migrate
 python manage.py collectstatic --no-input --clear
-
 exec "$@"

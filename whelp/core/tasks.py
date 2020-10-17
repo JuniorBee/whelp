@@ -1,7 +1,14 @@
-from celery import shared_task
-from django.core.management import call_command  # NEW
+from celery.task import Task
+
+from core.models import File, PDFContent
+from core.utils import get_pdf_content
 
 
-@shared_task
-def sample_task():
-    print("The sample task just ran.")
+class ExtractPDFContent(Task):
+    def run(self, file_id, *args, **kwargs):
+        file_obj = File.objects.get(id=file_id)
+        file_path = file_obj.file.path
+        content = get_pdf_content(file_path)
+        if PDFContent.objects.create(file=file_obj, content=content):
+            return True
+        return False

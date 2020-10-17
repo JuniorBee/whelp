@@ -4,3 +4,5 @@
 *.sqlite3
 whelp/media/
 whelp/static/
+/whelp/whelp/__pycache__/
+*.pyc

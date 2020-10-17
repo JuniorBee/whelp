@@ -12,3 +12,9 @@ class FileRetrieveSerializer(serializers.ModelSerializer):
     class Meta:
         model = File
         fields = ('id', 'file', 'timestamp')
+
+
+class FileStatusSerializer(serializers.Serializer):
+    STATUS_CHOICES = ('uploaded', 'finished')
+    file_id = serializers.UUIDField()
+    status = serializers.ChoiceField(choices=STATUS_CHOICES)
